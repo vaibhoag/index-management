@@ -24,8 +24,11 @@ ext {
     noticeFile = rootProject.file('NOTICE')
 }
 
-plugins.withId('java') {
-    sourceCompatibility = targetCompatibility = JavaVersion.VERSION_21
+plugins.withId('java'){
+    java {
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
+    }
 }
 
 plugins.withId('org.jetbrains.kotlin.jvm') {
@@ -41,7 +44,7 @@ jacocoTestReport {
     reports {
         xml.required.set(false)
         csv.required.set(false)
-        html.destination file("${buildDir}/jacoco/")
+        html.outputLocation.set(file("${buildDir}/jacoco/"))
     }
 }
 
